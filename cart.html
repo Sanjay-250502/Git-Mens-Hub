@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="box1 row">
+        <div class="logo col-lg-2 col-md-4 col-sm-4 col-4">
+    
+            <div class="logo_box">
+                <div class="git"><i class="fa-brands fa-github"></i></div>
+            </div>
+            <div class="text">GIT MENS HUB</div>
+        </div>
+        <div class="space col-lg-9 col-md-4  col-sm-4 col-4"></div>
+        <div class="cart col-lg-1 col-md-4 col-sm-4 col-4">
+            <a href="cart.html" style="text-decoration: none;color: white;">
+                <div class="cart_box">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="round">0</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1 style="text-align: center;">MY  CART</h1>
+        <div class="row" id="cart-items"></div>
+    </div>
+
+    <script>
+        let cartItems = localStorage.getItem("cartItems")?
+                        JSON.parse(localStorage.getItem("cartItems")) : [];
+        const cart_item = document.getElementById("cart-items");
+
+        for(let i=0 ; i<cartItems.length ; i++){
+            const product = cartItems[i];
+        const items = document.createElement('div');
+        items.classList.add('list','col-lg-3', 'mt-4',);
+
+        items.innerHTML = `
+        <div class="card">
+            <img src="${product.image}" class="card-img" alt="${product.name}">
+        <div class="card-body">
+            <h5 class="card-name">${product.name}</h5>
+            <p class="card-rate">Price: ${product.rate}</p>
+            <p class="card-rate1">${product.rate1}</p>
+
+        </div>
+        </div>
+    `;
+        cart_item.appendChild(items);
+    }
+    </script>
+</body>
+</html>
